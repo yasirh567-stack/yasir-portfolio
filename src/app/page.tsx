@@ -1,65 +1,83 @@
-import Image from "next/image";
+import { Download, Mail, ArrowRight } from "lucide-react";
+import { siteConfig } from "@/data/site";
+import { projects } from "@/data/projects";
+import { LinkButton } from "@/components/Button";
+import { ProjectCard } from "@/components/ProjectCard";
+import { SimpleIcon } from "@/components/SimpleIcon";
+import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+import { Reveal } from "@/components/Reveal";
+import { Container } from "@/components/Container";
+import { Section } from "@/components/Section";
+
+const teaserProjects = [...projects]
+  .sort((a, b) => Number(b.featured ?? false) - Number(a.featured ?? false))
+  .slice(0, 2);
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section className="py-24 sm:py-36">
+        <Container>
+          <Reveal>
+            <p className="mb-5 text-sm font-medium uppercase tracking-widest text-accent">
+              {siteConfig.role}
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
+              {siteConfig.name}
+            </h1>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
+              {siteConfig.tagline}
+            </p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <LinkButton href={siteConfig.resumeUrl} external icon={<Download className="h-4 w-4" />}>
+                Resume
+              </LinkButton>
+              <LinkButton
+                href={siteConfig.social.github}
+                external
+                variant="secondary"
+                icon={<SimpleIcon slug="github" className="h-4 w-4" />}
+              >
+                GitHub
+              </LinkButton>
+              <LinkButton
+                href={siteConfig.social.linkedin}
+                external
+                variant="secondary"
+                icon={<LinkedInIcon className="h-4 w-4" />}
+              >
+                LinkedIn
+              </LinkButton>
+              <LinkButton href="/contact" variant="secondary" icon={<Mail className="h-4 w-4" />}>
+                Contact
+              </LinkButton>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <Section
+        eyebrow="Selected Work"
+        title="Featured projects"
+        description="A couple of things I've been building recently. See the full project list for details, screenshots, and code."
+      >
+        <div className="grid gap-6 sm:grid-cols-2">
+          {teaserProjects.map((project, i) => (
+            <ProjectCard key={project.slug} project={project} delay={i * 0.05} />
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <Reveal delay={0.15} className="mt-10">
+          <LinkButton href="/projects" variant="ghost" icon={<ArrowRight className="h-4 w-4" />}>
+            View all projects
+          </LinkButton>
+        </Reveal>
+      </Section>
+    </>
   );
 }

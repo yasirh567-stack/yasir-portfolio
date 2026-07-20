@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1c1c22" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="800" fill="#0f0f13"/>
+  <rect width="1280" height="800" fill="url(#grid)"/>
+  <rect x="0.5" y="0.5" width="1279" height="799" fill="none" stroke="#24242b" stroke-width="1"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#60a5fa">News Classifier</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#5b6270">Screenshot 1 — Pipeline — replace in public/projects/</text>
+</svg>
