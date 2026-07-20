@@ -52,7 +52,7 @@ export default function EducationPage() {
           </Reveal>
           <div className="space-y-6">
             {leadership.map((role, i) => (
-              <Reveal key={role.organization} delay={i * 0.05}>
+              <Reveal key={`${role.organization}-${role.role}`} delay={i * 0.05}>
                 <div className="rounded-2xl border border-border bg-elevated p-8">
                   <div className="flex items-start gap-4">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">

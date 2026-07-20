@@ -23,7 +23,9 @@ export const leadership: LeadershipRole[] = [
     startDate: "Jan 2026",
     endDate: "May 2026",
     bullets: [
-      "Initiated recruitment efforts that produced the fraternity's largest spring pledge class in over 10 years.",
+      "Led recruitment programming that resulted in the fraternity's largest spring pledge class in more than 10 years.",
+      "Organized educational sessions, team-building activities, and leadership development opportunities for new members.",
+      "Mentored participants throughout the program while tracking progress and promoting accountability, engagement, and fraternity values.",
     ],
   },
   {
@@ -32,7 +34,9 @@ export const leadership: LeadershipRole[] = [
     startDate: "Aug 2024",
     endDate: "May 2026",
     bullets: [
-      "Organized general meetings and a range of member events, coordinating logistics and outreach across the organization.",
+      "Organized general meetings, professional development programs, and member events for the student organization.",
+      "Coordinated event logistics, scheduling, communications, and outreach across executive board members and committees.",
+      "Improved member engagement by gathering feedback and helping develop programming aligned with members' academic and career interests.",
     ],
   },
   {
@@ -41,8 +45,9 @@ export const leadership: LeadershipRole[] = [
     startDate: "Jan 2024",
     endDate: "May 2026",
     bullets: [
-      "Planned and led community service initiatives, coordinating logistics, outreach, and post-event feedback to improve future programming.",
-      "Built a semester-long service roadmap and used member input to prioritize high-impact events and grow participation.",
+      "Planned and led community service initiatives by coordinating volunteers, event logistics, outreach, and partnerships.",
+      "Developed a semester-long service roadmap that prioritized high-impact events and increased member participation.",
+      "Collected member and participant feedback after events to evaluate outcomes and improve future service programming.",
     ],
   },
 ];

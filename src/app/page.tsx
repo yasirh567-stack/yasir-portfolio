@@ -63,6 +63,12 @@ export default function Home() {
       </section>
 
       <Section
+        eyebrow="About"
+        title="About me"
+        description="I'm an ECE student at UT Austin who builds software, AI tools, and user-facing products, spanning network systems, GPU performance tooling, and full-stack web platforms. I'm especially interested in software engineering and product roles where technical depth meets product strategy, and I like building things that create measurable, real-world impact."
+      />
+
+      <Section
         eyebrow="Selected Work"
         title="Featured projects"
         description="A couple of things I've been building recently. See the full project list for details, screenshots, and code."

@@ -38,6 +38,7 @@ export const skills: SkillGroup[] = [
     items: [
       { name: "Git", icon: "git" },
       { name: "GitHub Actions", icon: "githubactions" },
+      { name: "AWS" },
       { name: "Docker", icon: "docker" },
       { name: "Linux", icon: "linux" },
       { name: "Jira", icon: "jira" },
