@@ -79,3 +79,12 @@ export interface LeadershipRole {
   endDate: string;
   bullets: string[];
 }
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  /** Current title/company, as shown on LinkedIn. */
+  title: string;
+  /** Clarifies the working relationship if it doesn't match the current title above. */
+  relationship?: string;
+}

@@ -8,6 +8,8 @@ import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { Reveal } from "@/components/Reveal";
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
+import { TestimonialCard } from "@/components/TestimonialCard";
+import { testimonials } from "@/data/testimonials";
 
 const teaserProjects = [...projects]
   .sort((a, b) => Number(b.featured ?? false) - Number(a.featured ?? false))
@@ -67,6 +69,16 @@ export default function Home() {
         title="About me"
         description="I'm an ECE student at UT Austin who builds software, AI tools, and user-facing products, spanning network systems, GPU performance tooling, and full-stack web platforms. I'm especially interested in software engineering and product roles where technical depth meets product strategy, and I like building things that create measurable, real-world impact."
       />
+
+      {testimonials.length > 0 && (
+        <Section eyebrow="Recommendation" title="What people say">
+          <div className="grid gap-6">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.name} testimonial={testimonial} />
+            ))}
+          </div>
+        </Section>
+      )}
 
       <Section
         eyebrow="Selected Work"
