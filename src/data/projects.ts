@@ -100,24 +100,23 @@ export const projects: Project[] = [
     slug: "real-time-news-classifier",
     name: "Real-Time News Classifier",
     summary:
-      "TF-IDF + Logistic Regression news classifier deployed on AWS with automated retraining.",
+      "A news topic classifier with a promotion gate that only ships retrained models that measurably beat the incumbent, live drift detection, and a fully Terraformed AWS serverless deployment.",
     description:
-      "A topic classification pipeline (TF-IDF + Logistic Regression) for news articles, served through FastAPI and deployed on AWS — S3 for storage, Lambda for inference, and EC2 for training — with a GitHub Actions workflow that automatically retrains and redeploys the model on a schedule, keeping classifications current as language and topics drift.",
-    tech: ["Python", "scikit-learn", "FastAPI", "AWS Lambda", "AWS S3", "AWS EC2", "GitHub Actions"],
-    // TODO: verify this is the exact repo URL/casing before publishing.
-    github: "https://github.com/yasirh567-stack/real-time-news-classifier",
+      "newsclf is a news topic classifier (TF-IDF + Logistic Regression over business, technology, sports, politics, health, entertainment, and science) served through FastAPI on a containerized AWS Lambda, with an hourly GitHub Actions workflow ingesting fresh articles from 22 RSS feeds and a weekly workflow retraining and gating the model. Every retrain trains a candidate and scores it against the currently deployed incumbent on the same fresh, never-seen holdout, only promoting it if it beats the incumbent by a configurable margin — the first real retrain scored a candidate at 0.516 macro F1 against the incumbent's 0.576, and the gate correctly rejected it, keeping the better model live. The deployed model serves at a 5.6ms warm p50 latency (benchmarked against a real uvicorn process, 200 requests) and reports live drift signals — out-of-vocabulary rate, population stability index, and rolling accuracy on genuinely unseen articles — so retraining is driven by measured language drift, not just a fixed schedule. All AWS access in CI runs through GitHub Actions OIDC role assumption with no long-lived credentials in repo secrets, and Terraform provisions the full stack (S3, ECR, Lambda, IAM, CloudWatch, and an ephemeral EC2 training instance that self-terminates after every run). One real bug caught along the way: the 'saga' solver is stochastic, and without a fixed random seed identical data produced different holdout accuracy on different runs (0.53 vs. 0.75) until it was pinned and verified deterministic. Backed by 39 tests, ruff and mypy clean — the Terraform is validated but not yet applied against live infrastructure, and the Lambda container image is written to spec but unbuilt, both flagged honestly rather than glossed over.",
+    tech: ["Python", "scikit-learn", "FastAPI", "Mangum", "AWS Lambda", "AWS S3", "AWS EC2", "Terraform", "GitHub Actions"],
+    github: "https://github.com/yasirh567-stack/Real-Time-News-Classifier",
     coverImage: {
-      src: "/projects/real-time-news-classifier/cover.svg",
-      alt: "Real-Time News Classifier live prediction feed",
+      src: "/projects/real-time-news-classifier/cover.png",
+      alt: "newsclf results dashboard showing test accuracy, per-class F1 scores, serving latency, and the promotion gate rejecting a worse retrained candidate",
     },
     images: [
       {
-        src: "/projects/real-time-news-classifier/cover.svg",
-        alt: "Real-Time News Classifier live prediction feed",
+        src: "/projects/real-time-news-classifier/cover.png",
+        alt: "newsclf results dashboard showing test accuracy, per-class F1 scores, serving latency, and the promotion gate rejecting a worse retrained candidate",
       },
       {
-        src: "/projects/real-time-news-classifier/screenshot-1.svg",
-        alt: "Real-Time News Classifier retraining pipeline diagram",
+        src: "/projects/real-time-news-classifier/screenshot-1.png",
+        alt: "newsclf architecture diagram: RSS feeds and AG News flow through hourly ingest into an S3 data lake, a weekly ephemeral EC2 job trains and gates a candidate model, and the promoted model serves from a Lambda container image",
       },
     ],
   },
