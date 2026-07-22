@@ -31,7 +31,8 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "Built a GPU usage monitoring tool in C++ and OpenGL that surfaced real-time rendering performance — GPU utilization, frame-processing activity, and resource usage — across different hardware configurations.",
       "Designed visualization components that made low-level graphics performance data easier for engineers to interpret and act on.",
-      "Investigated CPU-GPU performance bottlenecks and identified opportunities to improve rendering efficiency.",
+      "Investigated CPU-GPU performance bottlenecks and shipped optimizations that improved frame rate and reduced memory usage.",
+      "Added performance logging that recorded metrics per hardware configuration, giving the team a repeatable way to compare setups and catch regressions over time.",
       "Debugged rendering, resource-utilization, and hardware-compatibility issues surfaced by the tool, verifying fixes across multiple system configurations.",
       "Wrote maintainable, reusable C++ components to support future performance-monitoring features, refined through code review and iterative testing with the engineering team.",
       "Used Git and GitHub for version control and collaborative development, and documented the tool's functionality, setup, and metrics for the team.",
